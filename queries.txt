@@ -50,3 +50,9 @@ CREATE TABLE Tickets (
 CREATE USER 'ADMIN'@'localhost' IDENTIFIED BY 'CharlieTango-65';
 GRANT ALL PRIVILEGES ON airport_management.* TO 'your_username'@'localhost';
 FLUSH PRIVILEGES;
+CREATE USER 'customer_user'@'localhost' IDENTIFIED BY 'customer_password';
+GRANT SELECT ON AIRPORT.Flights TO 'customer_user'@'localhost';
+GRANT INSERT ON AIRPORT.Bookings TO 'customer_user'@'localhost';
+FLUSH PRIVILEGES;
+
+
