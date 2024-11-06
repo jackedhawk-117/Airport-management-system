@@ -1,0 +1,49 @@
+CREATE DATABASE AIRPORT;
+USE AIRPORT;
+CREATE TABLE Aircraft (
+    aircraft_id INT NOT NULL PRIMARY KEY,
+    model VARCHAR(50),
+    capacity INT,
+    manufacturer VARCHAR(50),
+    year_made INT
+);
+CREATE TABLE Customers (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL
+);
+CREATE TABLE Employees (
+    employee_id INT NOT NULL PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    position VARCHAR(50),
+    salary DECIMAL(10, 2),
+    hire_date DATE
+);
+CREATE TABLE Flights (
+    flight_id INT NOT NULL PRIMARY KEY,
+    origin VARCHAR(50),
+    destination VARCHAR(50),
+    departure_time DATETIME,
+    arrival_time DATETIME,
+    aircraft_id INT,
+    FOREIGN KEY (aircraft_id) REFERENCES Aircraft(aircraft_id)
+);
+CREATE TABLE Passengers (
+    passenger_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    passport_no VARCHAR(20),
+    nationality VARCHAR(50),
+    date_of_birth DATE
+);
+CREATE TABLE Tickets (
+    ticket_id INT NOT NULL PRIMARY KEY,
+    passenger_id INT,
+    flight_id INT,
+    seat_number VARCHAR(10),
+    price DECIMAL(10, 2),
+    booking_date DATETIME,
+    FOREIGN KEY (passenger_id) REFERENCES Passengers(passenger_id),
+    FOREIGN KEY (flight_id) REFERENCES Flights(flight_id)
+);
