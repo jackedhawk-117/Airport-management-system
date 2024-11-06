@@ -47,3 +47,6 @@ CREATE TABLE Tickets (
     FOREIGN KEY (passenger_id) REFERENCES Passengers(passenger_id),
     FOREIGN KEY (flight_id) REFERENCES Flights(flight_id)
 );
+CREATE USER 'ADMIN'@'localhost' IDENTIFIED BY 'CharlieTango-65';
+GRANT ALL PRIVILEGES ON airport_management.* TO 'your_username'@'localhost';
+FLUSH PRIVILEGES;
